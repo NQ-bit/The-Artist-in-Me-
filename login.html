@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+
+<body>
+<!--Put mySQL database in action once done.  -->
+<form action="" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <!-- Put all forms required as a text -->
+    <p>Please fill in this form to create an account.
+    </p>
+    <hr>
+
+    <label for="username"><b>Email</b></label>
+    <input type="text" id= "username" placeholder="Enter Username" name="username" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="pwsd" id= "password" placeholder="Enter Password" name="Password" required>
+
+    <!---->
+    <div class="Signinbtn">
+      <button type="submit" id= Signinbtn class="signinbtn" onfocus="enableKeyboardNav(this, 'home.html')" onclick="window.location.href='index.html'">Sign In</button>
+    </div>
+
+  </div>
+
+</form>
+
+<style>
+  /* General form styling */
+form {
+  width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Inputs */
+input[type=text],
+input[type=pwsd],
+input[type=submit] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Checkbox */
+input[type=checkbox] {
+  margin-right: 8px;
+}
+
+/* Buttons */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.cancelbtn {
+  background-color: #f44336;
+  color: white;
+  float: left;
+  width: 48%;
+}
+
+.signupbtn {
+  background-color: #4CAF50;
+  color: white;
+  float: right;
+  width: 48%;
+}
+
+/* Clearfix for button container */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Links */
+a {
+  color: dodgerblue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
+
+</html> 

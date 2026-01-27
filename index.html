@@ -11,11 +11,12 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 
+
 </head>
 
 <body>
 
-    <div class="container" tabindex="0">
+    <div class="container">
 
         <div class="wave">
             <img src="bg.png" alt="">
@@ -24,43 +25,48 @@
         <!-- Initialize Swiper   <img src="The.png" alt="website-logo" class="website-logo"> -->
 
         <div class="main-content">
-            <div class="image-pista">
+           <!--<div class="image-pista">
                 <div class="swiper">
                     <div class="swiper-wrapper">
-                        <div tabindex="0" class="swiper-slide"><img src="boots-8338072_1280.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="boots-8338072_1280.jpg" alt=""></div>
                         <div class="swiper-slide"><img src="color-7543677_1280.jpg" alt=""></div>
                         <div class="swiper-slide"><img src="woman-7161865_1280.jpg" alt=""></div>
                     </div>
                 </div>
             </div>
-
-            <div class="main-text" tabindex="0">
-                <h1 tabindex="0">The Artist In Me</h1>
-                <p tabindex="0">The canvas is mine, the story is me — unleashed in the colors of my soul.</p>
-                <button tabindex="0">Know More</button>
+--> 
+            <div class="main-text">
+                <h1>The Artist In Me</h1>
+                <p>The canvas is mine, the story is me — unleashed in the colors of my soul.</p>
+                <button>Know More</button>
             </div>
 
         </div>
 
         <!-- Buttons for New User; Login; Visitor -->
-        <div class="buttons" tabindex="0">
-            <button tabindex="0" onclick="window.location.href='new-user.html'" class="new-user-button"> New User?</button>
-            <button tabindex="0" onclick="window.location.href='login.html'" class="login-button">Login</button>
-            <button tabindex="0" onclick="window.location.href='visitor.html'" class="visitor-button">Visitor</button>
+        <div class="buttons">
+            <button class="new-user-button" onfocus="enableKeyboardNav(this, 'new-user.html')" onclick="window.location.href='new-user.html'">New User? </button>
+            <button class="login-button"    onfocus="enableKeyboardNav(this, 'login.html')"    onclick="window.location.href='login.html'" >Login</button>
+            <button class="visitor-button"  onfocus="enableKeyboardNav(this, 'visitor.html')"  onclick="window.location.href='visitor.html'">Visitor</button>
         </div>
 
 
     </div>
 
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <!-- Initialize Swiper -->
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-        });
-    </script>
+  function enableKeyboardNav(button, url) {
+    function handleKey(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        window.location.href = url;
+        button.removeEventListener('keydown', handleKey);
+      }
+    }
+    button.addEventListener('keydown', handleKey);
+    button.addEventListener('blur', () => {
+    button.removeEventListener('keydown', handleKey);
+    });
+  }
+
 
 
 </body>

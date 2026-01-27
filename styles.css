@@ -32,6 +32,7 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+
 nav ul {
     display: flex;
     list-style-type: none;  
@@ -40,15 +41,19 @@ nav ul {
 nav ul li{
     margin:0 5px;
 }
+
 nav ul a{
+    position: relative;
+    display: inline-block; 
     text-decoration: none;
-    padding: 0.3rem 1.3rem;
+    padding: 10px 20px;
     font-size: 17px;
     font-weight: bold;
     color: #151108;
     position: relative;
     z-index: 1;
 }
+
 nav ul a::after{
     content: "";
     width: 0%;
@@ -61,6 +66,8 @@ nav ul a::after{
     z-index: -1;
     transition: 0.5s;
 }
+
+
 nav ul a:hover:after{
     width: 100%;
 }
@@ -93,7 +100,7 @@ nav ul a:hover:after{
 .main-content h1 {
     font-size: 60px;
     letter-spacing: 1px;
-    color: #494234;
+    color:aliceblue;
 }
 .main-content p{
     margin-top: 10px;
@@ -111,14 +118,6 @@ nav ul a:hover:after{
     background-color: #565248;
     color: white;
     cursor: pointer;
-}
-.swiper{
-    width: 20rem;
-}
-.swiper-slide{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .buttons {
@@ -173,4 +172,79 @@ nav ul a:hover:after{
 
 .visitor-button:hover {
     background-color: #732d91;
+
 }
+
+
+/*CSS Code for sticky tab nav*/
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: #333;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.sticky-header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sticky-header li {
+  margin: 0 15px;
+}
+
+.sticky-header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.sticky-header a:hover {
+  color: #ff9800;
+}
+
+html {
+  scroll-behavior: smooth; /* enables smooth scrolling */
+}
+
+section {
+  height: 100vh; /* demo: each section fills screen */
+  padding: 20px;
+}
+
+
+
+
+/* The alert message box */
+
+/*
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+ /* color: white;
+  margin-bottom: 15px;
+}*/
+
+/* The close button */
+/*
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+/*
+.closebtn:hover {
+  color: black;
+}
+*/ 
