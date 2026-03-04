@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Create an Account | The Artist In Me</title>
+  <link rel="stylesheet" href="navbarstyles.css">
+</head>
 
 
 <body>
 <!--Put mySQL database in action once done.  -->
-<form action="" style="border:1px solid #ccc">
+<form name="signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="border:1px solid #ccc">
   <div class="container">
     <h1>Sign Up</h1>
     <!-- Put all forms required as a text -->
@@ -25,30 +30,39 @@
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" id= "psw-repeat" placeholder="Repeat Password" name="psw-repeat" required>
 
-    <label for="security-question"><b>Security Question:</b></label>
-    <input type="password" id= "security-question" placeholder="Security Question" name="security-question" required>
-    
+    <label for="security-question"><b>Security Question:</b><p></p></label>
+    <select type="password" id= "security-question" placeholder="Security Question" name="security-question" required>
+           <option value="">-- Select a question --</option>
+           <option value="pet">What is the name of a pet you've had, a pet you cared for, or a favorite fictional pet?</option>
+           <option value="school">What is the title of an artwork you love?</option>
+           <option value="city">What fictional world inspires your art?</option>
+           <option value="nickname">If you could live inside a story, where would it be?</option>
+    </select>
+
+
     <label for="security-answer"><b>Security Answer:</b></label>
     <input type="security-password" id= "security-answer" placeholder="Security Answer" name="security-answer" required>
     
 
     <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      <input type="checkbox" id= "checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
     </label>
     
-    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+    <p>By creating an account you agree to our <a href="#" style="color:rgb(50, 104, 151)">Terms & Privacy</a>.</p>
 
     <div class="clearfix">
-      <button type="button" class="cancelbtn" onfocus="enableKeyboardNav(this, 'index.html')" onclick="window.location.href='index.html'">Cancel</button>
-      <button type="submit" class="signupbtn">Sign Up</button>
+      <button type="button" id= "cancelbtn" class="cancelbtn" onfocus="enableKeyboardNav(this, 'index.html')" onclick="window.location.href='index.html'">Cancel</button>
+      <button type="submit" id= "submit button" class="signupbtn" onfocus="enableKeyboardNav(this, 'home.html')" onclick="window.location.href='home.html'">Sign Up</button>
     </div>
   </div>
 </form>
 
+
+
 <style>
   /* General form styling */
 form {
-  width: 400px;
+  width: 700px;
   margin: 40px auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -92,14 +106,14 @@ button {
 }
 
 .cancelbtn {
-  background-color: #f44336;
+  background-color: #DA190B;
   color: white;
   float: left;
   width: 48%;
 }
 
 .signupbtn {
-  background-color: #4CAF50;
+  background-color: #285828;
   color: white;
   float: right;
   width: 48%;
@@ -114,7 +128,7 @@ button {
 
 /* Links */
 a {
-  color: dodgerblue;
+  color: #01070e;
   text-decoration: none;
 }
 
@@ -124,16 +138,3 @@ a:hover {
 </style>
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-</html>

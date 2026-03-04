@@ -43,32 +43,29 @@
 
         </div>
 
-        <!-- Buttons for New User; Login; Visitor -->
+        <!-- Do not use buttons for nav -->
         <div class="buttons">
             <button class="new-user-button" onfocus="enableKeyboardNav(this, 'new-user.html')" onclick="window.location.href='new-user.html'">New User? </button>
             <button class="login-button"    onfocus="enableKeyboardNav(this, 'login.html')"    onclick="window.location.href='login.html'" >Login</button>
-            <button class="visitor-button"  onfocus="enableKeyboardNav(this, 'visitor.html')"  onclick="window.location.href='visitor.html'">Visitor</button>
+            <button class="visitor-button"  onfocus="enableKeyboardNav(this, 'home.html#Home')"  onclick="window.location.href='home.html#Home'">visitor</button>
         </div>
 
 
     </div>
 
-    <script>
-  function enableKeyboardNav(button, url) {
-    function handleKey(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        window.location.href = url;
-        button.removeEventListener('keydown', handleKey);
-      }
-    }
-    button.addEventListener('keydown', handleKey);
-    button.addEventListener('blur', () => {
-    button.removeEventListener('keydown', handleKey);
-    });
-  }
-
-
-
 </body>
 
-</html>
+<script>
+        function enableKeyboardNav(button, url) {
+        function handleKey(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            window.location.href = url;
+            button.removeEventListener('keydown', handleKey);
+        }
+        }
+        button.addEventListener('keydown', handleKey);
+        button.addEventListener('blur', () => {
+        button.removeEventListener('keydown', handleKey);
+   });   }
+</script>
+
