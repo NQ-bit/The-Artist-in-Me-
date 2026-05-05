@@ -1,48 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact The Artist In Me for inquiries about art commissions, exhibitions, and collaborations.">
   <title>Contact</title>
   <link rel="stylesheet" href="navbarstyles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fecfef);
+      background: url('path/to/artist-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 25px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    form:hover {
+      transform: translateY(-2px);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #8a2be2;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    input[type="submit"] {
+      background-color: #8a2be2;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #6a1b9a;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      form {
+        margin: 20px;
+        padding: 15px;
+      }
+      input[type="text"],
+      textarea {
+        font-size: 14px;
+      }
+      input[type="submit"] {
+        font-size: 14px;
+        padding: 10px 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div id="navbar-container"></div>
 
-  <form method="POST" name="Contact" data-netlify="true">
+  <main>
+    <section>
+      <h1>Contact Us</h1>
+      <p>Get in touch for art inquiries or commissions.</p>
+      <form method="POST" name="Contact" netlify-honeypot="bot-field" data-netlify="true" role="form">
+        <input type="hidden" name="form-name" value="contact">
 
-    <label for="fname">First Name</label>
-    <br>
-    <input type="text" id="fname" name="firstname" placeholder="Your first name..">
-    <br>
-    <br>
-    <label for="lname">Last Name</label>
-    <br> 
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-    <br>
-    <br>
-    <label for="email">Email</label>
-    <br> 
-    <input type="text" id="email" name="email" placeholder="email@example.com">
-    <br>
-    <label for="message">Message</label>
-    <br>
-    <textarea id="message" name="message" placeholder="Write Something here" style="height:200px"></textarea>
-    <br>
-    <br>
-    <input type="submit" value="Submit">
+        <label for="fname"><i class="fas fa-user"></i> First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your first name.." aria-label="First Name" required>
 
+        <label for="lname"><i class="fas fa-user"></i> Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name.." aria-label="Last Name" required>
 
+        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+        <input type="email" id="email" name="email" placeholder="email@example.com" aria-label="Email" required>
 
-  </form>
+        <label for="message"><i class="fas fa-comment"></i> Message</label>
+        <textarea id="message" name="message" placeholder="Write something here" style="height:200px" aria-label="Message" required></textarea>
 
-
-
-
+        <div data-netlify-recaptcha="true"></div>
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+  </main>
 
   <script src="js/main.js"></script>
-
 </body>
+</html>
 

@@ -1,21 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-  <meta charset="UTF-8">
-  <title>Home</title>
-  <link rel="stylesheet" href="navbarstyles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="navbarstyles.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:"Poppins", sans-serif;
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* SECTIONS */
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px;
+text-align:center;
+}
+
+.hero{
+background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.story{
+background:#111;
+}
+
+.gallery{
+background:#000;
+}
+
+/* TEXT */
+h1{
+font-family:"Permanent Marker", cursive;
+font-size:3rem;
+margin-bottom:20px;
+}
+
+p{
+max-width:700px;
+line-height:1.6;
+opacity:0.9;
+}
+
+/* SCROLL FADE */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.fade.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* GALLERY (HORIZONTAL SCROLL FIX) */
+.grid{
+display:flex;
+gap:25px;
+overflow-x:auto;
+padding:20px;
+scroll-snap-type:x mandatory;
+scroll-behavior:smooth;
+}
+
+.art{
+min-width:250px;
+flex:0 0 auto;
+position:relative;
+cursor:pointer;
+overflow:hidden;
+border-radius:20px;
+scroll-snap-align:start;
+border:none;
+background:none;
+}
+
+.art img{
+width:100%;
+height:200px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.art:hover img{
+transform:scale(1.1);
+}
+
+.label{
+position:absolute;
+bottom:0;
+background:rgba(243, 238, 238, 0.7);
+width:100%;
+padding:10px;
+font-size:14px;
+}
+
+/* MODAL */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:1000;
+padding:20px;
+}
+
+/* FLEX LAYOUT FOR SIDE-BY-SIDE */
+.modal-body{
+display:flex;
+gap:30px;
+align-items:center;
+max-width:900px;
+}
+
+.modal-body img{
+width:50%;
+border-radius:15px;
+}
+
+.modal-text{
+width:50%;
+text-align:left;
+}
+
+.modal-text p{
+margin-top:10px;
+line-height:1.5;
+}
+
+/* CLOSE BUTTON */
+.close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:2rem;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+/* MOBILE FIX */
+@media (max-width:768px){
+.modal-body{
+flex-direction:column;
+}
+
+.modal-body img,
+.modal-text{
+width:100%;
+text-align:center;
+}
+}
+
+</style>
+
 </head>
 
+<div id="navbar-container"></div>
+
 <body>
-    <div id="navbar-container"></div>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Welcome to the Creative Museum</h1>
+<p>Scroll to explore stories, perspectives, and artwork from artists of all abilities.</p>
+</section>
+
+<!-- STORY SECTION -->
+<section class="story fade">
+<h1>Creativity Has No Limits</h1>
+<p>
+Art is not defined by physical ability, perception, or communication style.
+Each piece you see is a window into a unique way of experiencing the world.
+</p>
+</section>
+
+<section class="story fade">
+<h1>Different Ways of Seeing</h1>
+<p>
+Some artists paint what they feel. Others create what they hear, imagine, or remember.
+This space celebrates those differences—not as limitations, but as strengths.
+</p>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+<h1>Featured Works</h1>
+
+<div class="grid">
+
+<button class="art" onclick="openModal('Haadia Khan Art for Disabled And Here.jpg','Haadia Khan','An exploration of identity.')">
+<img src="Haadia Khan Art for Disabled And Here.jpg" alt="Artwork about identity">
+<div class="label">Haadia Khan</div>
+</button>
+
+<button class="art" onclick="openModal('hijab sits on a bench.jpg','Hijab Sits on a Bench','A quiet reflection on identity and culture.')">
+<img src="hijab sits on a bench.jpg" alt="Person sitting on a bench wearing a hijab">
+<div class="label">Hijab Sits on a Bench</div>
+</button>
+
+<button class="art" onclick="openModal('Dice Bundy for Disabled And Here.png','Dice Bundy','Two Black disabled friends meeting at a restaurant.')">
+<img src="Dice Bundy for Disabled And Here.png" alt="Friends meeting at a restaurant">
+<div class="label">Dice Bundy</div>
+</button>
+
+<button class="art" onclick="openModal('Dominique Davis for Disabled And Here.png','Dominique Davis','A vibrant expression of resilience.')">
+<img src="Dominique Davis for Disabled And Here.png" alt="Colorful artwork expressing resilience">
+<div class="label">Dominique Davis</div>
+</button>
+
+</div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+
+<button class="close" onclick="closeModal()" aria-label="Close image">✖</button>
+
+<div class="modal-body" onclick="event.stopPropagation()">
+  <img id="modalImg" alt="">
+  
+  <div class="modal-text">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+</div>
 
 
 
+<script>
 
 
 
+const faders = document.querySelectorAll('.fade');
+const observer = new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});});
+faders.forEach(el=>observer.observe(el));
 
-    <script src="js/main.js"></script>
+/* MODAL */
+function openModal(img,title,desc){document.getElementById("modal").style.display="flex";document.getElementById("modalImg").src=img;document.getElementById("modalTitle").innerText=title;document.getElementById("modalDesc").innerText=desc;}
+function closeModal(){document.getElementById("modal").style.display="none";}
+
+/* SCROLL ANIMATION */
+function openModal(img,title,desc){
+  const modal = document.getElementById("modal");
+  modal.style.display = "flex";
+
+  const modalImg = document.getElementById("modalImg");
+  modalImg.src = img;
+  modalImg.alt = desc;
+
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("modalDesc").innerText = desc;
+}
+
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+
+/* ESC key close */
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeModal();
+  }
+});
+
+</script>
+
+ <script src="js/main.js"></script>
+
 </body>
+</html>

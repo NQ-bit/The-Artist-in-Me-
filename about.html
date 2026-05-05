@@ -1,18 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us Page</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="navbarstyles.css">
+
+  <!-- Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    .full-split { 
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-side, .right-side {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .left-side {
+      background: #555;
+      color: white;
+    }
+
+    .right-side {
+      background: #5e2a2a;
+      color: white;
+      position: relative; /* 🔑 IMPORTANT */
+      overflow: hidden;   /* 🔑 keeps quotes inside */
+    }
+
+    /* Floating quotes */
+    .quote {
+      position: absolute;
+      max-width: 220px;
+      background: rgba(255,255,255,0.85);
+      color: #222;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 1.5s ease;
+    }
+
+    @media (max-width: 768px) {
+      .full-split {
+        flex-direction: column;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
-    <div id="navbar-container"></div>
+    <div id="navbar-container">Navigation Bar</div>
+
+      <div class="full-split">
+
+        <div class="left-side"> 
+          <h1>Purpose of Project</h1>
+          <p> This project is designed to showcase the work of artists with disabilities, while learning how to apply accessibility principles in web development. I am new to this field, but it was a great opportunity to learn and grow.</p>
+        </div>
 
 
+        <div class="right-side">
+          <h1>Creator & Disability In Art</h1>
+          
+            <div class="quote" style="top: 20%; left: 10%;">
+           “Art enables us to find ourselves and lose ourselves at the same time.”
+         </div>
 
+          “Creativity takes courage.”
+        </div>
+
+        <div class="quote" style="top: 70%; left: 20%;">
+          “Disability is not inability—it’s a different perspective.”
+        </div>
+          </div>
+
+      </div>
+    <div class="quote" style="top: 50%; left: 55%;">
+      
+
+   
 
     <script src="js/main.js"></script>
+
+     <script>
+    // -----------------------------
+    // LOGIN SYSTEM (NETLIFY IDENTITY)
+    // -----------------------------
+    const quoteForm = document.getElementById("quote-form");
+
+    function updateAuthUI() {
+      const user = netlifyIdentity.currentUser();
+
+      if (user) {
+        quoteForm.style.display = "flex";
+      } else {
+        quoteForm.style.display = "none";
+      }
+    }
+
+    netlifyIdentity.on("login", user => {
+      updateAuthUI();
+      netlifyIdentity.close();
+    });
+
+    netlifyIdentity.on("logout", () => {
+      updateAuthUI();
+    });
+
+    updateAuthUI();
+
+    // -----------------------------
+    // FLOATING QUOTES ANIMATION
+    // -----------------------------
+    const panel = document.getElementById("rightPanel");
+    const quotes = document.querySelectorAll(".quote");
+
+    function moveQuotes() {
+      const width = panel.clientWidth;
+      const height = panel.clientHeight;
+
+      quotes.forEach(q => {
+        const x = Math.random() * (width - 220);
+        const y = Math.random() * (height - 120);
+
+        q.style.left = x + "px";
+        q.style.top = y + "px";
+      });
+    }
+
+    setInterval(moveQuotes, 3000);
+    moveQuotes();
+
+    // -----------------------------
+    // SUBMIT QUOTE (OPTIONAL BACKEND)
+    // -----------------------------
+    async function submitQuote() {
+      const user = netlifyIdentity.currentUser();
+      const text = document.getElementById("quoteInput").value;
+
+      if (!user) {
+        alert("You must be logged in.");
+        return;
+      }
+
+      await fetch("/.netlify/functions/addQuote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token.access_token}`
+        },
+        body: JSON.stringify({ text })
+      });
+
+      alert("Quote submitted!");
+    }
+  </script>
+
 </body>
+
+</html>

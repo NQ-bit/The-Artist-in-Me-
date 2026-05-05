@@ -4,8 +4,19 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ</title>
   <link rel="stylesheet" href="navbarstyles.css">
+
+  <style>
+    body{
+    margin:0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg,#8ec5fc,#e0c3fc);
+    color:#333;
+}
+  </style>
+
 </head>
 
 <body>
@@ -17,4 +28,30 @@
 
 
     <script src="js/main.js"></script>
+
+
+  <!--Netlify Identity for User Authentication-->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <script>
+    netlifyIdentity.init();
+
+    netlifyIdentity.on("init", user => {
+      if (user) {
+        document.getElementById("user-email").textContent = user.email;
+      } else {
+        document.getElementById("user-email").textContent = "Guest";
+      }
+    });
+
+    netlifyIdentity.on("login", user => {
+      document.getElementById("user-email").textContent = user.email;
+      window.location.href = "home.html";
+    });
+
+    netlifyIdentity.on("logout", () => {
+      window.location.href = "login.html";
+    });
+  </script>
+
 </body>
