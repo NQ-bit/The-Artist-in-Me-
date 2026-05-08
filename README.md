@@ -41,6 +41,5 @@ Tags used included:
 - `<nav>`
 - `<main>`
 - `<section>`
-- `<footer>`
 
 This helped create a logical page structure for assistive technologies.
