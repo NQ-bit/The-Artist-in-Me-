@@ -36,5 +36,11 @@ Visitors can post their own artwork on the page and add it to the timeline.
 
 ### 2. Building of the Website 
 
+Tags used included:
+- `<header>`
+- `<nav>`
+- `<main>`
+- `<section>`
+- `<footer>`
 
-
+This helped create a logical page structure for assistive technologies.
