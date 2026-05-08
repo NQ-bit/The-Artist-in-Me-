@@ -42,4 +42,4 @@ Tags used included:
 - `<main>`
 - `<section>`
 
-This helped create a logical page structure for assistive technologies.
+This is not a full list as I am still working on this website. 
