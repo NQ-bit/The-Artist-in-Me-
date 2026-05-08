@@ -30,7 +30,8 @@ Visitors can post their own artwork on the page and add it to the timeline.
 > I started this project by first researching and thinking about what I wanted my website to be about. After I did that, I created a figma protype of the website.
 > I outlined what each navigation tabs will be about and the information that will be placed on each webpage.
 > <img width="1902" height="799" alt="Screenshot 2026-03-18 120614" src="https://github.com/user-attachments/assets/01167147-a91c-4ced-b1af-40e710099015" />
-<img width="541" height="290" alt="image" src="https://github.com/user-attachments/assets/cb751671-5839-4850-a159-cc388009b68b" />
+> 
+> <img width="541" height="290" alt="image" src="https://github.com/user-attachments/assets/cb751671-5839-4850-a159-cc388009b68b" />
 
 
 ### 2. Building of the Website 
