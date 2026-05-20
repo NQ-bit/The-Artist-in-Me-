@@ -1,18 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us Page</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="navbarstyles.css">
+
+  <!-- Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+
+    .full-split { 
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-side, .right-side {
+      flex: 1;
+      padding:60px 40px;
+    }
+
+    .left-side {
+      background: #2f2f34;
+      color: white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border-right:1px solid rgba(255,255,255,0.08); 
+    }
+
+    .left-side h1{
+      font-family:"Permanent Marker", cursive;
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:25px;
+      color:#ff6ec7;
+      text-shadow:0 0 15px rgba(255,110,199,.4);
+    }
+
+    .left-side p{
+      font-size:1.2rem;
+      line-height:1.9;
+      max-width:600px;
+      color:#f2f2f2;
+    }
+
+    .right-side {
+      background: #4b1f24;
+      color: white;
+      position: relative; /*  IMPORTANT */
+      overflow: hidden;   /*  keeps quotes inside */
+      text-align: center;
+    }
+
+    /* QUOTES */
+    .quote{
+    position:absolute;
+    width:240px;
+    padding:18px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.1);
+    color:white;
+    font-size:0.95rem;
+    line-height:1.5;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
+    transition:all 3s ease-in-out;
+    animation:float 6s infinite ease-in-out;
+
+    z-index:1;
+  }
+
+    .quote:hover{
+      transform:scale(1.06);
+      background:rgba(255,255,255,0.18);
+    }
+
+    .right-side h1{
+      font-family:"Permanent Marker", cursive;
+      font-size:3rem;
+      color:#fff;
+
+      position:absolute;
+      top:30px;
+      left:50%;
+      transform:translateX(-50%);
+
+      width:100%;
+      z-index:20;
+      pointer-events:none;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-12px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* MOBILE */
+    @media(max-width:900px){
+      .full-split{
+        flex-direction:column;
+      }
+    }
+
+      
+
+  </style>
+
 </head>
 
 <body>
-    <div id="navbar-container"></div>
+    <div id="navbar-container">Navigation Bar</div>
+
+      <div class="full-split">
+
+        <div class="left-side"> 
+          <h1>Purpose of Project</h1>
+          <p> This project is designed to showcase the work of artists with disabilities, while learning how to apply accessibility principles in web development. I am new to this field, but it was a great opportunity to learn and grow.</p>
+        </div>
 
 
+        <div class="right-side">
+            <h1>Creator & Disability In Art</h1>
+            
+            <div class="quote" style="top: 22%; left: 10%;">
+            “Art enables us to find ourselves and lose ourselves at the same time.”
+          </div>
+              <div class="quote" style="top: 40%; right: 50%;">
+            “Creativity takes courage.”
+          </div>
 
+          <div class="quote" style="top: 70%; left: 60%;">
+            “Disability is not inability, it’s a different perspective.”
+          </div> 
+
+        <div class="quote" style="top: 22%; left: 55%;">
+            “Disability is not a brave struggle or courage in the face of adversity. 
+            Disability is an art. It’s an ingenious way to live." - Stephen Hawking
+        </div> 
+
+         <div class="quote" style="top: 53%; left: 20%;">
+            I am only one, but I am one. I cannot do everything, but I can do something. 
+            And I will not let what I cannot do interfere with what I can do. - Ralph Braun
+        </div>
+
+        <div class="quote" style="top: 50%; left: 60%;">
+            Know me for my ability, not my disability. - Chris Burke
+        </div>
+
+         <div class="quote" style="top: 80%; right: 60%;">
+            “The world is full of magic things, patiently waiting for our senses to grow sharper.” 
+            - W.B. Yeats 
+         </div>
+
+        </div>
+      </div>
+       
+   
 
     <script src="js/main.js"></script>
+
+      <footer style="text-align: center; padding: 20px; background: #333; color: white;">
+          <small>Copyright © 2026 The Artist In Me All Rights Reserved.</small>
+       </footer>
+
+     <script>
+    // -----------------------------
+    // LOGIN SYSTEM (NETLIFY IDENTITY)
+    // -----------------------------
+    const quoteForm = document.getElementById("quote-form");
+
+    function updateAuthUI() {
+      const user = netlifyIdentity.currentUser();
+
+      if (user) {
+        quoteForm.style.display = "flex";
+      } else {
+        quoteForm.style.display = "none";
+      }
+    }
+
+    netlifyIdentity.on("login", user => {
+      updateAuthUI();
+      netlifyIdentity.close();
+    });
+
+    netlifyIdentity.on("logout", () => {
+      updateAuthUI();
+    });
+
+    updateAuthUI();
+
+    // -----------------------------
+    // FLOATING QUOTES ANIMATION
+    // -----------------------------
+    const panel = document.getElementById("rightPanel");
+    const quotes = document.querySelectorAll(".quote");
+
+    function moveQuotes() {
+      const width = panel.clientWidth;
+      const height = panel.clientHeight;
+
+      quotes.forEach(q => {
+        const x = Math.random() * (width - 220);
+        const y = Math.random() * (height - 120);
+
+        q.style.left = x + "px";
+        q.style.top = y + "px";
+      });
+    }
+
+    setInterval(moveQuotes, 3000);
+    moveQuotes();
+
+    // -----------------------------
+    // SUBMIT QUOTE (OPTIONAL BACKEND)
+    // -----------------------------
+    async function submitQuote() {
+      const user = netlifyIdentity.currentUser();
+      const text = document.getElementById("quoteInput").value;
+
+      if (!user) {
+        alert("You must be logged in.");
+        return;
+      }
+
+      await fetch("/.netlify/functions/addQuote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token.access_token}`
+        },
+        body: JSON.stringify({ text })
+      });
+
+      alert("Quote submitted!");
+    }
+  </script>
+
 </body>
+
+</html>

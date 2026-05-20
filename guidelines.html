@@ -2,8 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home | Creative Arts Community</title>
   <link rel="stylesheet" href="navbarstyles.css">
+
+
+
+  <style>
+    body{
+    margin:0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg,#8ec5fc,#e0c3fc);
+    color:#333;
+}
+
+.guidelines{
+    max-width:900px;
+    margin:60px auto;
+    padding:40px;
+    background:white;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+#list {
+  padding-left: 20px; /* numbers inside padding */
+}
+
+/* Each li as a card */
+#list li {
+  list-style-position: inside; /* keep numbers */
+  padding: 20px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: #f7f9ff;
+  transition: all 0.25s ease;
+}
+
+#list li:hover {
+  background: #eef2ff;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* Inner content flex wrapper */
+#list li .content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Strong title styling */
+#list li strong {
+  font-size: 18px;
+  min-width: 180px; /* optional: align all titles */
+  display: inline-block;
+}
+
+#list li p {
+  margin: 0;
+  font-size: 15px;
+}
+
+footer 
+{
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #555;
+}
+  
+
+  </style>
+
+
 </head>
 
 <body>
@@ -11,34 +100,51 @@
   <!-- Navbar will be injected here -->
   <div id="navbar-container"></div>
 
-  <main>
+  <main class="guidelines">
     <h1>Creative Community Guidelines</h1>
   
-  <p>Welcome to our creative space!  This is a safe and inspiring community where artists of all abilities can share their work, connect with others, and grow together. To keep our space welcoming and supportive, we’ve put together a few simple guidelines:</p>
+  <p class="beginning">Welcome to our creative space!  This is a safe and inspiring community where artists of all abilities can share their work, connect with others, and grow together. To keep our space welcoming and supportive, we’ve put together a few simple guidelines:</p>
   
-  <ol>
-    <li><strong>Be Kind and Respectful</strong>
+  <ol id="list">
+    <li> <div class="container">
+      <strong id="rule1-title">Be Kind and Respectful</strong>
       <p>Treat every member with kindness and respect. Celebrate each other’s creativity, offer encouragement, and avoid negative or hurtful comments. Every artist’s journey is unique.</p>
+      </div>
     </li>
-    <li><strong>Share Your Art Safely</strong>
-      <p>Post your artwork thoughtfully. Make sure you have the rights to share it, and respect others’ creations. Give credit when you’re inspired by someone else’s work.</p>
-    </li>
-    <li><strong>Foster Inclusivity</strong>
-      <p>This is a space for everyone. Avoid language or behavior that might exclude or hurt others based on ability, background, identity, or experience.</p>
-    </li>
-    <li><strong>Encourage Growth</strong>
-      <p>Offer constructive feedback if requested, and embrace learning from others. Celebrate progress, not perfection!</p>
-    </li> 
-    <li><strong>Protect Privacy</strong>
-      <p>Respect the privacy of fellow members. Don’t share personal information or work without permission.</p>
-    </li>
-    <li><strong>Keep the Space Positive and Creative</strong>
-      <p>Share your ideas, experiments, and inspirations! We want this community to be uplifting, collaborative, and full of imagination.</p>
 
+    <li> <div class="container">
+      <strong id="rule2-title">Share Your Art Safely</strong>
+      <p>Post your artwork thoughtfully. Make sure you have the rights to share it, and respect others’ creations. Give credit when you’re inspired by someone else’s work.</p>
+      </div>
     </li>
+
+    <li> <div class="container">
+      <strong id="rule3-title">Foster Inclusivity</strong>
+      <p>This is a space for everyone. Avoid language or behavior that might exclude or hurt others based on ability, background, identity, or experience.</p>
+      </div>
+    </li>
+
+    <li> <div class="container">
+      <strong id="rule4-title">Encourage Growth</strong>
+      <p>Offer constructive feedback if requested, and embrace learning from others. Celebrate progress, not perfection!</p>
+      </div>
+    </li> 
+
+    <li> <div class="container">
+      <strong id="rule5-title">Protect Privacy</strong>
+      <p>Respect the privacy of fellow members. Don’t share personal information or work without permission.</p>
+      </div>
+    </li>
+
+    <li> <div class="container">
+      <strong id="rule5-title">Keep the Space Positive and Creative</strong>
+      <p>Share your ideas, experiments, and inspirations! We want this community to be uplifting, collaborative, and full of imagination.</p>
+     </div>
+    </li>
+
   </ol>
 
-  <footer>
+  <footer id="site-footer">
      Together, we create a safe, inclusive, and inspiring space for every artist.
   </footer>
 
@@ -48,5 +154,36 @@
   </main>
 
   <script src="js/main.js"></script>
+
+
+  <!--Netlify Identity for User Authentication-->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <script>
+    netlifyIdentity.init();
+
+    netlifyIdentity.on("init", user => {
+      if (user) {
+        document.getElementById("user-email").textContent = user.email;
+      } else {
+        document.getElementById("user-email").textContent = "Guest";
+      }
+    });
+
+    netlifyIdentity.on("login", user => {
+      document.getElementById("user-email").textContent = user.email;
+      window.location.href = "home.html";
+    });
+
+    netlifyIdentity.on("logout", () => {
+      window.location.href = "login.html";
+    });
+  </script>
+
+
 </body>
+
+
+
+
 </html>

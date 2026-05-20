@@ -1,21 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-  <meta charset="UTF-8">
-  <title>Home</title>
-  <link rel="stylesheet" href="navbarstyles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="navbarstyles.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:"Poppins", sans-serif;
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* SECTIONS */
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px;
+text-align:center;
+}
+
+.hero{
+background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.story{
+background:#111;
+}
+
+.gallery{
+background:#000;
+}
+
+/* TEXT */
+h1{
+font-family:"Permanent Marker", cursive;
+font-size:3rem;
+margin-bottom:20px;
+}
+
+p{
+max-width:700px;
+line-height:1.6;
+opacity:0.9;
+}
+
+/* SCROLL FADE */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.fade.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* GALLERY (HORIZONTAL SCROLL FIX) */
+.grid{
+display:flex;
+gap:25px;
+overflow-x:auto;
+padding:20px;
+scroll-snap-type:x mandatory;
+scroll-behavior:smooth;
+}
+
+.art{
+min-width:250px;
+flex:0 0 auto;
+position:relative;
+cursor:pointer;
+overflow:hidden;
+border-radius:20px;
+scroll-snap-align:start;
+border:none;
+background:none;
+}
+
+.art img{
+width:100%;
+height:200px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.art:hover img{
+transform:scale(1.1);
+}
+
+.label{
+position:absolute;
+bottom:0;
+background:rgba(243, 238, 238, 0.7);
+width:100%;
+padding:10px;
+font-size:14px;
+}
+
+/* MODAL */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:1000;
+padding:20px;
+}
+
+/* FLEX LAYOUT FOR SIDE-BY-SIDE */
+.modal-body{
+display:flex;
+gap:30px;
+align-items:center;
+max-width:900px;
+}
+
+.modal-body img{
+width:50%;
+border-radius:15px;
+}
+
+.modal-text{
+width:50%;
+text-align:left;
+}
+
+.modal-text p{
+margin-top:10px;
+line-height:1.5;
+}
+
+/* CLOSE BUTTON */
+.close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:2rem;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+/* MOBILE FIX */
+@media (max-width:768px){
+.modal-body{
+flex-direction:column;
+}
+
+.modal-body img,
+.modal-text{
+width:100%;
+text-align:center;
+}
+}
+
+.close:focus{
+outline:3px solid #fff;
+outline-offset:4px;
+}
+
+</style>
+
 </head>
 
+<div id="navbar-container"></div>
+
 <body>
-    <div id="navbar-container"></div>
 
+<!-- HERO -->
+<section class="hero">
+<h1>Welcome to the Creative Museum</h1>
+<p>Scroll to explore stories, perspectives, and artwork from artists of all abilities.</p>
+</section>
 
+<!-- STORY SECTION -->
+<section class="story fade">
+<h1>Creativity Has No Limits</h1>
+<p>
+Art is not defined by physical ability, perception, or communication style.
+Each piece you see is a window into a unique way of experiencing the world.
+</p>
+</section>
 
+<section class="story fade">
+<h1>Different Ways of Seeing</h1>
+<p>
+Some artists paint what they feel. Others create what they hear, imagine, or remember.
+This space celebrates those differences and not the limitations, but the strengths.
+</p>
+</section>
 
+<!-- GALLERY -->
+<section class="gallery">
+<h1>Featured Works</h1>
 
+  <div class="grid">
 
+    <!-- ART 1 -->
+    <button class="art"
+      onclick="openModal(
+      'Haadia Khan Art for Disabled And Here.jpg',
+      'Haadia Khan',
+      `An exploration of identity.
 
-    <script src="js/main.js"></script>
+      A diabetic Pakistani woman sits in a pizza restaurant with a childhood friend, using a pump to inject some insulin before eating.
+      
+      \n\n Illustrator: Haadia Khan
+      \n\nTags: identity, culture, friendship, diabetes `,
+      'https://affecttheverb.com/gallery/disabledandhere/pizzaplace/'
+    )">
+
+      <img src="Haadia Khan Art for Disabled And Here.jpg"
+           alt="Artwork about identity">
+      </img> 
+      <div class="label">Haadia Khan</div>
+    </button>
+
+    <!-- ART 2 -->
+    <button class="art"
+      onclick="openModal(
+      'hijab sits on a bench.jpg',
+      'Hijab Sits on a Bench',
+      `A quiet reflection on identity and culture.
+
+      A Pakistani Deaf woman wearing a hijab sits on a bench at an art museum, immersed in a world of florals and soft hues.
+      
+      \n\n Illustrator: Haadia Khan
+      \n\nTags: identity, culture, reflection, deaf`,
+      'https://affecttheverb.com/gallery/disabledandhere/artmuseum/'
+    )">
+
+      <img src="hijab sits on a bench.jpg"
+           alt="Person sitting on a bench wearing a hijab">
+      </img>
+      <div class="label">Hijab Sits on a Bench</div>
+    </button>
+
+    <!-- ART 3 -->
+    <button class="art"
+      onclick="openModal(
+      'Dice Bundy for Disabled And Here.png',
+      'Dice Bundy',
+      `Two Black disabled friends meeting at a restaurant.
+
+      A moment of friendship and accessibility. 
+
+      Two Black and disabled friends meet up at a restaurant. In the center, one friend stands while using his black and gold cane.
+      
+      \n\n Illustrator: Dice Bundy
+      \n\nTags: friendship, accessibility, black disabled, restaurant`,
+      'https://affecttheverb.com/gallery/disabledandhere/restaurantmeetup/'
+    )">
+
+      <img src="Restaurant meet-up - Dice Bundy for Disabled And Here.png"
+           alt="Friends meeting at a restaurant">
+      </img>
+      <div class="label">Dice Bundy</div>
+    </button>
+
+    <!-- ART 4 -->
+    <button class="art"
+      onclick="openModal(
+      'Dominique Davis for Disabled And Here.png',
+      'Dominique Davis',
+      `A vibrant expression of resilience.
+
+      Bright colors communicate strength and emotion. Two chic Black women grab coffee from an outdoor pick-up window. 
+      \n\n Illustrator: Dominique Davis
+      \n\nTags: resilience, strength, black disabled, coffee trip`,
+      'https://affecttheverb.com/gallery/disabledandhere/scootercoffeetrip/'
+    )">
+
+      <img src="Coffee window pick-up - Dominique Davis for Disabled And Here.png"
+           alt="Colorful artwork expressing resilience">
+      </img>
+      <div class="label">Dominique Davis</div>
+    </button>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+
+  <button
+  class="close"
+  onclick="closeModal()"
+  aria-label="Close modal"
+  type="button">
+  ✖
+</button>
+
+  <div class="modal-body" onclick="event.stopPropagation()">
+
+    <img id="modalImg" alt="">
+
+    <div class="modal-text">
+
+      <h2 id="modalTitle"></h2>
+
+      <!-- MULTIPLE PARAGRAPHS -->
+      <div id="modalContent"></div>
+
+      <!-- LINK -->
+      <a id="modalLink"
+         href="#"
+         target="_blank">
+        Learn More
+      </a>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<footer style="text-align:center; padding:20px; background:#111; color:#fcfafa;">
+  <small> Copyright © 2026 The Artist In Me All Rights Reserved.</small>
+</footer>
+
+<script>
+
+/* FADE ANIMATION */
+const faders = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+faders.forEach(el => observer.observe(el));
+
+/* MODAL */
+function openModal(img, title, content, link){
+
+  const modal = document.getElementById("modal");
+
+  modal.style.display = "flex";
+
+  // IMAGE
+  const modalImg = document.getElementById("modalImg");
+  modalImg.src = img;
+  modalImg.alt = title;
+
+  // TITLE
+  document.getElementById("modalTitle").innerText = title;
+
+  document.querySelector(".close").focus();
+
+  // PARAGRAPHS
+  const paragraphs = content.split("\n\n");
+
+  let html = "";
+
+  paragraphs.forEach(p => {
+    html += `<p>${p}</p>`;
+  });
+
+  document.getElementById("modalContent").innerHTML = html;
+
+  // LINK
+  const modalLink = document.getElementById("modalLink");
+  modalLink.href = link;
+}
+
+/* CLOSE MODAL */
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+
+/* ESC KEY CLOSE */
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeModal();
+  }
+});
+
+</script>
+
+ <script src="js/main.js"></script>
+
 </body>
+</html>

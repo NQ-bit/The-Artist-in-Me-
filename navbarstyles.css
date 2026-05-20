@@ -1,48 +1,94 @@
 
-/*CSS for Navbar  Container*/
+/*CSS for Navbar  Container
 
 .navbar {
   background-color: #333;
   position: sticky;
   top: 0;
-  width: 100%;         /* Make navbar full width */
+  width: 100%;         
   z-index: 1000;
   margin: 0;
   padding: 0;
-}
+} */
 
-/* NAV LIST */
+/* NAV LIST 
 .navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  width: 100%;         /* Ensure UL uses full width */
-}
+  width: 100%;         
+}*/
 
-/* NAV ITEMS */
+/* NAV ITEMS 
 .navbar li {
-  flex: 1;             /* Each item takes equal space */
+  flex: 1;             
   text-align: center;
-}
+} */
 
-/* NAV LINKS */
+/* NAV LINKS
 .navbar a {
   display: block;
-  padding: 14px 0;     /* Vertical padding only */
+  padding: 14px 0;      Vertical padding only 
   text-decoration: none;
   color: white;
   font-weight: 500;
   transition: background 0.3s ease;
-}
+}*/
 
-/* HOVER EFFECT */
+/* HOVER EFFECT 
 .navbar a:hover {
   background-color: #555;
 }
 
-/* ACTIVE PAGE */
+ ACTIVE PAGE 
 .navbar a.active {
   background-color: #4F46E5;
   color: white;
+}*/
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #080808;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.navbar a.active {
+  border-bottom: 2px solid white;
+}
+
+/* user section */
+.user-area {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: white;
+}
+
+.user-area button {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
 }
