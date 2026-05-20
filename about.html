@@ -26,39 +26,103 @@
 
     .left-side, .right-side {
       flex: 1;
-      padding: 20px;
+      padding:60px 40px;
     }
 
     .left-side {
-      background: #555;
+      background: #2f2f34;
       color: white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border-right:1px solid rgba(255,255,255,0.08); 
+    }
+
+    .left-side h1{
+      font-family:"Permanent Marker", cursive;
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:25px;
+      color:#ff6ec7;
+      text-shadow:0 0 15px rgba(255,110,199,.4);
+    }
+
+    .left-side p{
+      font-size:1.2rem;
+      line-height:1.9;
+      max-width:600px;
+      color:#f2f2f2;
     }
 
     .right-side {
-      background: #5e2a2a;
+      background: #4b1f24;
       color: white;
-      position: relative; /* 🔑 IMPORTANT */
-      overflow: hidden;   /* 🔑 keeps quotes inside */
+      position: relative; /*  IMPORTANT */
+      overflow: hidden;   /*  keeps quotes inside */
+      text-align: center;
     }
 
-    /* Floating quotes */
-    .quote {
-      position: absolute;
-      max-width: 220px;
-      background: rgba(255,255,255,0.85);
-      color: #222;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 14px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 1.5s ease;
+    /* QUOTES */
+    .quote{
+    position:absolute;
+    width:240px;
+    padding:18px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.1);
+    color:white;
+    font-size:0.95rem;
+    line-height:1.5;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
+    transition:all 3s ease-in-out;
+    animation:float 6s infinite ease-in-out;
+
+    z-index:1;
+  }
+
+    .quote:hover{
+      transform:scale(1.06);
+      background:rgba(255,255,255,0.18);
     }
 
-    @media (max-width: 768px) {
-      .full-split {
-        flex-direction: column;
+    .right-side h1{
+      font-family:"Permanent Marker", cursive;
+      font-size:3rem;
+      color:#fff;
+
+      position:absolute;
+      top:30px;
+      left:50%;
+      transform:translateX(-50%);
+
+      width:100%;
+      z-index:20;
+      pointer-events:none;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-12px);
+      }
+      100%{
+        transform:translateY(0px);
       }
     }
+
+    /* MOBILE */
+    @media(max-width:900px){
+      .full-split{
+        flex-direction:column;
+      }
+    }
+
+      
+
   </style>
 
 </head>
@@ -75,27 +139,48 @@
 
 
         <div class="right-side">
-          <h1>Creator & Disability In Art</h1>
-          
-            <div class="quote" style="top: 20%; left: 10%;">
-           “Art enables us to find ourselves and lose ourselves at the same time.”
-         </div>
-
-          “Creativity takes courage.”
-        </div>
-
-        <div class="quote" style="top: 70%; left: 20%;">
-          “Disability is not inability—it’s a different perspective.”
-        </div>
+            <h1>Creator & Disability In Art</h1>
+            
+            <div class="quote" style="top: 22%; left: 10%;">
+            “Art enables us to find ourselves and lose ourselves at the same time.”
+          </div>
+              <div class="quote" style="top: 40%; right: 50%;">
+            “Creativity takes courage.”
           </div>
 
-      </div>
-    <div class="quote" style="top: 50%; left: 55%;">
-      
+          <div class="quote" style="top: 70%; left: 60%;">
+            “Disability is not inability, it’s a different perspective.”
+          </div> 
 
+        <div class="quote" style="top: 22%; left: 55%;">
+            “Disability is not a brave struggle or courage in the face of adversity. 
+            Disability is an art. It’s an ingenious way to live." - Stephen Hawking
+        </div> 
+
+         <div class="quote" style="top: 53%; left: 20%;">
+            I am only one, but I am one. I cannot do everything, but I can do something. 
+            And I will not let what I cannot do interfere with what I can do. - Ralph Braun
+        </div>
+
+        <div class="quote" style="top: 50%; left: 60%;">
+            Know me for my ability, not my disability. - Chris Burke
+        </div>
+
+         <div class="quote" style="top: 80%; right: 60%;">
+            “The world is full of magic things, patiently waiting for our senses to grow sharper.” 
+            - W.B. Yeats 
+         </div>
+
+        </div>
+      </div>
+       
    
 
     <script src="js/main.js"></script>
+
+      <footer style="text-align: center; padding: 20px; background: #333; color: white;">
+          <small>Copyright © 2026 The Artist In Me All Rights Reserved.</small>
+       </footer>
 
      <script>
     // -----------------------------

@@ -14,21 +14,48 @@
     font-family: "Segoe UI", sans-serif;
     background: linear-gradient(135deg,#8ec5fc,#e0c3fc);
     color:#333;
-}
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+
+  #list li {
+    margin-bottom: 20px;
+  }
+
   </style>
 
 </head>
 
+ <div id="navbar-container"></div>
+
 <body>
-    <div id="navbar-container"></div>
+   
+  <main class="container">
+    <h1>Frequently Asked Questions</h1>
+    <ul id="list">
+      <li><strong>How do I join the community?</strong><br>Simply click on the "Sign Up" button in the top right corner and follow the instructions to create your account. </li>
+      <li><strong>Is there a membership fee?</strong><br>No, joining our community is completely free! We want to make art accessible to everyone.</li>
+      <li><strong>Can I share my artwork on the platform?</strong><br>Yes! We encourage all members to share their creations. You can upload your artwork in your profile and share it with the community. We do not own the rights to any artwork uploaded.</li>
+      <li><strong>Are there any guidelines for posting content?</strong><br>Yes, we ask that all members follow our community guidelines, which include being respectful, avoiding offensive content, and not sharing personal information.</li>
+      <li><strong>How can I connect with other artists?</strong><br>You can join our discussion forums, participate in events, and collaborate on projects to connect with fellow artists.</li>
 
+    </ul>
 
+    <footer style="margin-top:40px; text-align:center; font-size:14px; color:#777;">
+      2026 The Artist In Me. All rights reserved.
+    </footer>
 
-
-
+  </main>
 
     <script src="js/main.js"></script>
-
+ 
 
   <!--Netlify Identity for User Authentication-->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>

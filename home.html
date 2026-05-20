@@ -171,6 +171,11 @@ text-align:center;
 }
 }
 
+.close:focus{
+outline:3px solid #fff;
+outline-offset:4px;
+}
+
 </style>
 
 </head>
@@ -198,7 +203,7 @@ Each piece you see is a window into a unique way of experiencing the world.
 <h1>Different Ways of Seeing</h1>
 <p>
 Some artists paint what they feel. Others create what they hear, imagine, or remember.
-This space celebrates those differences—not as limitations, but as strengths.
+This space celebrates those differences and not the limitations, but the strengths.
 </p>
 </section>
 
@@ -206,78 +211,184 @@ This space celebrates those differences—not as limitations, but as strengths.
 <section class="gallery">
 <h1>Featured Works</h1>
 
-<div class="grid">
+  <div class="grid">
 
-<button class="art" onclick="openModal('Haadia Khan Art for Disabled And Here.jpg','Haadia Khan','An exploration of identity.')">
-<img src="Haadia Khan Art for Disabled And Here.jpg" alt="Artwork about identity">
-<div class="label">Haadia Khan</div>
-</button>
+    <!-- ART 1 -->
+    <button class="art"
+      onclick="openModal(
+      'Haadia Khan Art for Disabled And Here.jpg',
+      'Haadia Khan',
+      `An exploration of identity.
 
-<button class="art" onclick="openModal('hijab sits on a bench.jpg','Hijab Sits on a Bench','A quiet reflection on identity and culture.')">
-<img src="hijab sits on a bench.jpg" alt="Person sitting on a bench wearing a hijab">
-<div class="label">Hijab Sits on a Bench</div>
-</button>
+      A diabetic Pakistani woman sits in a pizza restaurant with a childhood friend, using a pump to inject some insulin before eating.
+      
+      \n\n Illustrator: Haadia Khan
+      \n\nTags: identity, culture, friendship, diabetes `,
+      'https://affecttheverb.com/gallery/disabledandhere/pizzaplace/'
+    )">
 
-<button class="art" onclick="openModal('Dice Bundy for Disabled And Here.png','Dice Bundy','Two Black disabled friends meeting at a restaurant.')">
-<img src="Dice Bundy for Disabled And Here.png" alt="Friends meeting at a restaurant">
-<div class="label">Dice Bundy</div>
-</button>
+      <img src="Haadia Khan Art for Disabled And Here.jpg"
+           alt="Artwork about identity">
+      </img> 
+      <div class="label">Haadia Khan</div>
+    </button>
 
-<button class="art" onclick="openModal('Dominique Davis for Disabled And Here.png','Dominique Davis','A vibrant expression of resilience.')">
-<img src="Dominique Davis for Disabled And Here.png" alt="Colorful artwork expressing resilience">
-<div class="label">Dominique Davis</div>
-</button>
+    <!-- ART 2 -->
+    <button class="art"
+      onclick="openModal(
+      'hijab sits on a bench.jpg',
+      'Hijab Sits on a Bench',
+      `A quiet reflection on identity and culture.
 
-</div>
+      A Pakistani Deaf woman wearing a hijab sits on a bench at an art museum, immersed in a world of florals and soft hues.
+      
+      \n\n Illustrator: Haadia Khan
+      \n\nTags: identity, culture, reflection, deaf`,
+      'https://affecttheverb.com/gallery/disabledandhere/artmuseum/'
+    )">
+
+      <img src="hijab sits on a bench.jpg"
+           alt="Person sitting on a bench wearing a hijab">
+      </img>
+      <div class="label">Hijab Sits on a Bench</div>
+    </button>
+
+    <!-- ART 3 -->
+    <button class="art"
+      onclick="openModal(
+      'Dice Bundy for Disabled And Here.png',
+      'Dice Bundy',
+      `Two Black disabled friends meeting at a restaurant.
+
+      A moment of friendship and accessibility. 
+
+      Two Black and disabled friends meet up at a restaurant. In the center, one friend stands while using his black and gold cane.
+      
+      \n\n Illustrator: Dice Bundy
+      \n\nTags: friendship, accessibility, black disabled, restaurant`,
+      'https://affecttheverb.com/gallery/disabledandhere/restaurantmeetup/'
+    )">
+
+      <img src="Restaurant meet-up - Dice Bundy for Disabled And Here.png"
+           alt="Friends meeting at a restaurant">
+      </img>
+      <div class="label">Dice Bundy</div>
+    </button>
+
+    <!-- ART 4 -->
+    <button class="art"
+      onclick="openModal(
+      'Dominique Davis for Disabled And Here.png',
+      'Dominique Davis',
+      `A vibrant expression of resilience.
+
+      Bright colors communicate strength and emotion. Two chic Black women grab coffee from an outdoor pick-up window. 
+      \n\n Illustrator: Dominique Davis
+      \n\nTags: resilience, strength, black disabled, coffee trip`,
+      'https://affecttheverb.com/gallery/disabledandhere/scootercoffeetrip/'
+    )">
+
+      <img src="Coffee window pick-up - Dominique Davis for Disabled And Here.png"
+           alt="Colorful artwork expressing resilience">
+      </img>
+      <div class="label">Dominique Davis</div>
+    </button>
+
+  </div>
 </section>
 
 <!-- MODAL -->
 <div class="modal" id="modal" onclick="closeModal()">
 
-<button class="close" onclick="closeModal()" aria-label="Close image">✖</button>
+  <button
+  class="close"
+  onclick="closeModal()"
+  aria-label="Close modal"
+  type="button">
+  ✖
+</button>
 
-<div class="modal-body" onclick="event.stopPropagation()">
-  <img id="modalImg" alt="">
-  
-  <div class="modal-text">
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
+  <div class="modal-body" onclick="event.stopPropagation()">
+
+    <img id="modalImg" alt="">
+
+    <div class="modal-text">
+
+      <h2 id="modalTitle"></h2>
+
+      <!-- MULTIPLE PARAGRAPHS -->
+      <div id="modalContent"></div>
+
+      <!-- LINK -->
+      <a id="modalLink"
+         href="#"
+         target="_blank">
+        Learn More
+      </a>
+
+    </div>
   </div>
 </div>
 </div>
 
-
+<footer style="text-align:center; padding:20px; background:#111; color:#fcfafa;">
+  <small> Copyright © 2026 The Artist In Me All Rights Reserved.</small>
+</footer>
 
 <script>
 
-
-
+/* FADE ANIMATION */
 const faders = document.querySelectorAll('.fade');
-const observer = new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});});
-faders.forEach(el=>observer.observe(el));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+faders.forEach(el => observer.observe(el));
 
 /* MODAL */
-function openModal(img,title,desc){document.getElementById("modal").style.display="flex";document.getElementById("modalImg").src=img;document.getElementById("modalTitle").innerText=title;document.getElementById("modalDesc").innerText=desc;}
-function closeModal(){document.getElementById("modal").style.display="none";}
+function openModal(img, title, content, link){
 
-/* SCROLL ANIMATION */
-function openModal(img,title,desc){
   const modal = document.getElementById("modal");
+
   modal.style.display = "flex";
 
+  // IMAGE
   const modalImg = document.getElementById("modalImg");
   modalImg.src = img;
-  modalImg.alt = desc;
+  modalImg.alt = title;
 
+  // TITLE
   document.getElementById("modalTitle").innerText = title;
-  document.getElementById("modalDesc").innerText = desc;
+
+  document.querySelector(".close").focus();
+
+  // PARAGRAPHS
+  const paragraphs = content.split("\n\n");
+
+  let html = "";
+
+  paragraphs.forEach(p => {
+    html += `<p>${p}</p>`;
+  });
+
+  document.getElementById("modalContent").innerHTML = html;
+
+  // LINK
+  const modalLink = document.getElementById("modalLink");
+  modalLink.href = link;
 }
 
+/* CLOSE MODAL */
 function closeModal(){
   document.getElementById("modal").style.display = "none";
 }
 
-/* ESC key close */
+/* ESC KEY CLOSE */
 document.addEventListener("keydown", function(e){
   if(e.key === "Escape"){
     closeModal();
