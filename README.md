@@ -1,19 +1,32 @@
 # The Artist In Me 
 ## Overview 
-The Artist In Me is a website that was designed for me to learn about accessibility design in the digital space of websites. I worked on this website during my time with my host site
-called Soling Consulting in the Maryland Civic Innovation program. During my time with the company, I was tasked by my manager to create a website from scratch that has
-accessibility in mind from the beginning, rather than at the end of the production of the website. This website is a project that allowed me to practice accessibility designs of 
-a website from a developers prospective, while still incorportating inclusive design practice. 
-# What is the Artist In Me?
-The Artist In Me is a web-based site that allows individuals from all backgrounds (disabled or not) to be able to view art from all over the world. 
-A place where everyone can be an artist even if you can draw stick figures. The purpose of this project is to showcase the historical impacts of 
-those with disabilities and the current impacts that are being made in the artistic world. The webpage will showcase arts made by those who have disabilities.
-It will take the visitor to the webpage to view the historical impact of each artist's present and past. 
-Visitors can post their own artwork on the page and add it to the timeline. 
+The Artist In Me is an accessibility‑focused website I built during my time at Soling Consulting as part of the Maryland Civic Innovation Program.
+My manager challenged me to design a website from scratch with accessibility in mind from the very beginning, rather than treating accessibility as an afterthought.
 
-**p.s. This website is still a work in progress** 
+This project allowed me to practice:
 
-**Target Audience:** All ages welcomed
+Accessibility‑first design
+
+Inclusive design principles
+
+Keyboard‑friendly navigation
+
+WCAG‑aligned development
+
+Real‑world problem‑solving from a developer’s perspective
+## Project Purpose
+The Artist In Me is a web‑based platform that welcomes individuals of all backgrounds artwork from around the world.
+The goal is to highlight:
+
+The historical impact of artists with disabilities
+
+The contributions of modern disabled creators
+
+A space where anyone can be an artist, even if they “only draw stick figures”
+
+**Note This website is still a work in progress** 
+
+**All ages. All abilities. All backgrounds.**
 
 # 🔧 Features 
 - Built using HTML5, CSS3, JavaScript es6+
