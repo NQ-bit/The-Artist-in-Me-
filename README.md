@@ -1,17 +1,17 @@
 # The Artist In Me 
 ## Overview 
+## Live Site 
+https://roaringartist.netlify.app/
+
 The Artist In Me is an accessibility‑focused website I built during my time at Soling Consulting as part of the Maryland Civic Innovation Program.
 My manager challenged me to design a website from scratch with accessibility in mind from the very beginning, rather than treating accessibility as an afterthought.
 
 This project allowed me to practice:
 
-Accessibility‑first design
-
-Inclusive design principles
-
-Keyboard‑friendly navigation
-
-WCAG‑aligned development
+- Accessibility‑first design
+- Inclusive design principles
+- Keyboard‑friendly navigation
+- WCAG‑aligned development
 
 Real‑world problem‑solving from a developer’s perspective
 ## Project Purpose
